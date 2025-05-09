@@ -2,12 +2,11 @@ name: Deploy to S3
 
 on:
   push:
-    branches: [main]  
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -21,5 +20,7 @@ jobs:
 
       - name: Upload files to S3
         run: |
-          aws s3 cp index.html s3://cmtr-3f5ev6bd-bucket-1746812322/ --acl public-read
+          aws s3 cp index.html s3://cmtr-3f5ev6bd-bucket-1746812322/ \
+            --content-type text/html
+
 
